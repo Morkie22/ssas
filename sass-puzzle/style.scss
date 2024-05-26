@@ -1,0 +1,56 @@
+$primary-color: #3498db;
+$piece-size: 50px;
+$gap-size: 5px;
+
+.puzzle {
+    display: grid;
+    grid-template-columns: repeat(10, $piece-size);
+    grid-gap: $gap-size;
+    padding: $gap-size;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.piece {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $piece-size;
+    height: $piece-size;
+    background-color: $primary-color;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 10%; /* Modify this to give a more puzzle-like appearance */
+    transition: background-color 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 2px white, 0 2px 5px rgba(0,0,0,0.2);
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        background: $primary-color;
+    }
+
+    &:before {
+        width: 50%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+    }
+
+    &:after {
+        width: 100%;
+        height: 50%;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+    }
+
+    &:hover {
+        background-color: darken($primary-color, 10%);
+    }
+}
